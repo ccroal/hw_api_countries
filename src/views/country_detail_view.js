@@ -21,8 +21,18 @@ CountryDetailView.prototype.render = function(country){
   const countryRegion = document.createElement('p');
   countryRegion.textContent = `Region: ${country.region}`
 
+  const countryFlag = this.createImage(country);
+
   displayCountry.appendChild(countryName);
   displayCountry.appendChild(countryRegion);
+  displayCountry.appendChild(countryFlag);
+}
+
+CountryDetailView.prototype.createImage = function(country){
+  const img = document.createElement('img');
+  img.classList.add('medium-image');
+  img.src = country.flag
+  return img;
 }
 
 module.exports = CountryDetailView;
