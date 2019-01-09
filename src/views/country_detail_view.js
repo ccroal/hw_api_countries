@@ -13,7 +13,7 @@ CountryDetailView.prototype.bindEvents = function(){
 
 CountryDetailView.prototype.render = function(country){
   const displayCountry = document.querySelector('#country');
-  country.innerHTML = '';
+  displayCountry.innerHTML = '';
 
   const countryName = document.createElement('h2');
   countryName.textContent = country.name;
@@ -23,9 +23,12 @@ CountryDetailView.prototype.render = function(country){
 
   const countryFlag = this.createImage(country);
 
+  const countryLanguages = this.createList(country);
+
   displayCountry.appendChild(countryName);
   displayCountry.appendChild(countryRegion);
   displayCountry.appendChild(countryFlag);
+  displayCountry.appendChild(countryLanguages);
 }
 
 CountryDetailView.prototype.createImage = function(country){
@@ -33,6 +36,16 @@ CountryDetailView.prototype.createImage = function(country){
   img.classList.add('medium-image');
   img.src = country.flag
   return img;
+}
+
+CountryDetailView.prototype.createList = function(country){
+  const list = document.createElement('ul');
+  country.languages.forEach((language) => {
+  const listItem = document.createElement('li');
+  listItem.textContent = language.name
+  list.appendChild(listItem)
+});
+return list;
 }
 
 module.exports = CountryDetailView;
