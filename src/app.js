@@ -7,7 +7,10 @@ document.addEventListener('DOMContentLoaded', () => {
   console.log('JavaScript Loaded');
   const selectElement = document.querySelector('#countries');
   const selectView = new SelectView(selectElement);
-  selectView.bindEvents()
+  selectView.bindEvents();
+
+  const countryDetailView = new CountryDetailView();
+  countryDetailView.bindEvents();
 
   const countries = new Countries();
   countries.bindEvents();
